@@ -112,6 +112,11 @@ TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/
 # HIDL
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/framework_manifest.xml
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
+ifdef BOARD_USES_KEYMASTER_4
+    DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/keymaster/keymaster_4.xml
+else
+    DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/keymaster/keymaster_3.xml
+endif
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 
 # Properties
