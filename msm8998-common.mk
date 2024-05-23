@@ -356,7 +356,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libqti-perfd-client \
     android.hardware.power.stats@1.0-service.mock \
-    android.hardware.power-service.nokia-libperfmgr
+    android.hardware.power-service.lineage-libperfmgr
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -428,7 +428,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH) \
     hardware/google/pixel \
-    hardware/google/interfaces
+    hardware/google/interfaces \
+    hardware/lineage/interfaces/power-libperfmgr \
+    hardware/qcom-caf/common/libqti-perfd-client
 
 # Telephony
 PRODUCT_PACKAGES += \
