@@ -46,9 +46,7 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libtinycompress \
-    libvolumelistener \
-    tinymix.vendor \
-    tinyplay.vendor
+    libvolumelistener
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/audio_configs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_configs.xml \
@@ -396,13 +394,11 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.fih.smartamp_init.sh \
     init.qcom.early_boot.sh \
     init.qti.fm.sh \
     init.qti.ims.sh \
     init.qcom.sh \
     init.qcom.usb.sh \
-    init.fih.poweroff_charging.rc \
     init.qcom.rc \
     init.target.rc \
     init.qcom.usb.rc \
