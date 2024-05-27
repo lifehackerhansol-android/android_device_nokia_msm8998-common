@@ -20,7 +20,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter NB1 A1N_sprout,$(TARGET_DEVICE)),)
+ifneq ($(filter NB1 A1N DDV DRG PL2,$(TARGET_DEVICE)),)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
