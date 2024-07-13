@@ -368,6 +368,10 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/telephony_product_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/telephony_product_privapp-permissions-qti.xml \
     $(COMMON_PATH)/configs/telephony_system-ext_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml
 
+# Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := true
+
 # Radio
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
@@ -392,10 +396,8 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 # Ramdisk (fstab)
-ifneq ($(filter A1N B2N C1N CTL DDV DRG PL2 SLD TAS,$(shell echo $(TARGET_PRODUCT) | sed 's/^lineage_//')),)
 PRODUCT_PACKAGES += \
     fstab.qcom
-endif
 
 # Recovery
 PRODUCT_COPY_FILES += \
