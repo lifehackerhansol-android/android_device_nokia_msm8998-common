@@ -108,6 +108,13 @@ vendor.display.enable_default_color_mode=1
 vendor.display.perf_hint_window=50
 vendor.gralloc.enable_fb_ubwc=1
 debug.sf.enable_gl_backpressure=1
+debug.sf.use_phase_offsets_as_durations=1
+debug.sf.late.sf.duration=10500000
+debug.sf.late.app.duration=20500000
+debug.sf.early.sf.duration=21000000
+debug.sf.early.app.duration=16500000
+debug.sf.earlyGl.sf.duration=13500000
+debug.sf.earlyGl.app.duration=21000000
 debug.sf.recomputecrop=0
 
 # Dex2oat
