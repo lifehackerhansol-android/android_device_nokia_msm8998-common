@@ -29,11 +29,11 @@ AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS += \
     boot \
-    system
-
-ifeq ($(filter NB1,$(shell echo $(TARGET_PRODUCT) | sed 's/^lineage_//')),)
-AB_OTA_PARTITIONS += vendor
-endif
+    system \
+    vendor \
+    system_ext \
+    product \
+    odm
 
 # Audio
 AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
@@ -120,11 +120,27 @@ TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
 BOARD_USES_METADATA_PARTITION := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_FLASH_BLOCK_SIZE := 262144
-BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
 BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_NO_RECOVERY := true
+
+# Partition (Retrofit)
+-include vendor/lineage/config/BoardConfigReservedSize.mk
+TARGET_COPY_OUT_SYSTEM := system
+TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_ODM := odm
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SUPER_PARTITION_METADATA_DEVICE := system
+BOARD_SUPER_PARTITION_GROUPS := nokia_dynamic_partitions
+BOARD_NOKIA_DYNAMIC_PARTITIONS_SIZE := $(shell expr $(BOARD_SUPER_PARTITION_SIZE) - 4194304) # 4MiB overhead
+BOARD_NOKIA_DYNAMIC_PARTITIONS_PARTITION_LIST := system_ext system vendor product odm
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
@@ -148,11 +164,6 @@ include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
-
-# Vendor
-ifneq ($(PRODUCT_FULL_TREBLE_OVERRIDE), true)
-TARGET_COPY_OUT_VENDOR := vendor
-endif
 
 # Vendor security patch level
 VENDOR_SECURITY_PATCH := 2022-10-01

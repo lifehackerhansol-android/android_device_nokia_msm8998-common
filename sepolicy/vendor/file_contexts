@@ -15,6 +15,8 @@
 /dev/block/platform/soc/1da4000\.ufshc/by-name/nvdef_[ab]                      u:object_r:custom_ab_block_device:s0
 /dev/block/platform/soc/1da4000\.ufshc/by-name/splash_[ab]                     u:object_r:custom_ab_block_device:s0
 /dev/block/platform/soc/1da4000\.ufshc/by-name/systeminfo_[ab]                 u:object_r:custom_ab_block_device:s0
+/dev/block/platform/soc/1da4000\.ufshc/by-name/system_[ab]                     u:object_r:custom_ab_block_device:s0
+/dev/block/platform/soc/1da4000\.ufshc/by-name/vendor_[ab]                 u:object_r:custom_ab_block_device:s0
 
 # Partitions (Non-A/B)
 /dev/block/platform/soc/1da4000\.ufshc/by-name/box                             u:object_r:fih_partition:s0
