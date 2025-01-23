@@ -344,13 +344,8 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.target.rc \
     init.qcom.usb.rc \
-    ueventd.qcom.rc
-
-# Ramdisk (fstab)
-ifeq ($(filter NB1,$(shell echo $(TARGET_PRODUCT) | sed 's/^lineage_//')),)
-PRODUCT_PACKAGES += \
+    ueventd.qcom.rc \
     fstab.qcom
-endif
 
 # Recovery
 PRODUCT_COPY_FILES += \
